@@ -1,11 +1,11 @@
-'use client'
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const AnimatedAvatar = ({ message, isThinking = false }) => {
+const Avatar = ({ message }) => {
     const [isBlinking, setIsBlinking] = useState(false);
-    const [isTalking, setIsTalking] = useState(false);
+
+    const isTalking = message && message.length > 0;
+
 
     useEffect(() => {
         const blinkInterval = setInterval(() => {
@@ -13,18 +13,8 @@ const AnimatedAvatar = ({ message, isThinking = false }) => {
             setTimeout(() => setIsBlinking(false), 200);
         }, 3000);
 
-        if (!isThinking) {
-            const talkInterval = setInterval(() => {
-                setIsTalking(prev => !prev);
-            }, 200);
-            return () => {
-                clearInterval(blinkInterval);
-                clearInterval(talkInterval);
-            };
-        }
-
         return () => clearInterval(blinkInterval);
-    }, [isThinking]);
+    }, []);
 
     return (
         <div className="flex items-center space-x-4">
@@ -72,14 +62,14 @@ const AnimatedAvatar = ({ message, isThinking = false }) => {
                         className="cls-7"
                         d="M186.28,142.24c6.1,0,6.1,9.38,0,9.43H186c-6.11,0-6.11-9.38,0-9.43h.27Z"
                         fill="#00214e"
-                        animate={isTalking && !isThinking ? { scaleY: [1, 1.2, 1] } : {}}
+                        animate={isTalking ? { scaleY: [1, 1.2, 1] } : {}}
                         transition={{ repeat: Infinity, duration: 0.3 }}
                     />
                     <motion.path
                         className="cls-7"
                         d="M236.41,140.85c5.66.05,5.66,8.7,0,8.75h-.26c-5.66,0-5.66-8.7,0-8.75h.26Z"
                         fill="#00214e"
-                        animate={isTalking && !isThinking ? { scaleY: [1, 1.2, 1] } : {}}
+                        animate={isTalking ? { scaleY: [1, 1.2, 1] } : {}}
                         transition={{ repeat: Infinity, duration: 0.3 }}
                     />
                 </svg>
@@ -87,22 +77,16 @@ const AnimatedAvatar = ({ message, isThinking = false }) => {
 
             {/* Speech/Thought Bubble */}
             {message && (
-                <div className={`relative bg-white p-4 rounded-2xl shadow-lg max-w-xs ${isThinking ? 'rounded-tr-none' : 'rounded-tl-none'}`}>
+                <div className={`relative bg-white p-4 rounded-2xl shadow-lg max-w-xs rounded-tl-none`}>
                     <p className="text-sm">{message}</p>
                     {/* Bubble tail */}
                     <div
-                        className={`absolute ${isThinking ? 'top-2 -right-2' : 'top-2 -left-2'} w-4 h-4 bg-white transform ${isThinking ? 'rotate-45' : '-rotate-45'}`}
+                        className={`absolute top-2 -left-2 w-4 h-4 bg-white transform -rotate-45`}
                     />
-                    {isThinking && (
-                        <>
-                            <div className="absolute -bottom-4 right-8 w-3 h-3 bg-white rounded-full" />
-                            <div className="absolute -bottom-6 right-6 w-2 h-2 bg-white rounded-full" />
-                        </>
-                    )}
                 </div>
             )}
         </div>
     );
 };
 
-export default AnimatedAvatar;
+export default Avatar;
