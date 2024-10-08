@@ -6,6 +6,7 @@ import Card from "./components/Card";
 import InputField from "./components/InputField";
 import MessageQueue from "./components/MessageQueue";
 import LanguageGame from "./components/LanguageGame";
+import DragAndDropGame from "./components/DragAndDropGame";
 
 export default function Home() {
 
@@ -32,6 +33,11 @@ export default function Home() {
   const handleSolvingRiddle2 = () => {
     setNewMessage({ text: "Richtig!", isThinking: false, duration: 5000 });
     setRiddleLevel(3); 
+  }
+
+  const handleSolvingRiddle3 = () => {
+    setNewMessage({ text: "Richtig!", isThinking: false, duration: 5000 });
+    setRiddleLevel(4); 
   }
 
   const getRiddle = (riddleLevel) => {
@@ -61,7 +67,7 @@ export default function Home() {
       case 3:
         return (
           <Card header="Riddle 3">
-            <p>All riddles solved!</p>
+            <DragAndDropGame isGameComplete={handleSolvingRiddle3}/>
           </Card>
         );
       default:
