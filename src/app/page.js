@@ -7,6 +7,7 @@ import InputField from "./components/InputField";
 import MessageQueue from "./components/MessageQueue";
 import LanguageGame from "./components/LanguageGame";
 import DragAndDropGame from "./components/DragAndDropGame";
+import PDFDownloader from "./components/PdfDownload";
 
 export default function Home() {
 
@@ -70,6 +71,13 @@ export default function Home() {
             <DragAndDropGame isGameComplete={handleSolvingRiddle3}/>
           </Card>
         );
+
+        case 4:
+          return (
+            <Card header="Riddle 3">
+              <PDFDownloader />
+            </Card>
+          );
       default:
         return <p>Invalid state</p>;
     }
