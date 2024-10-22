@@ -5,8 +5,22 @@ import { motion } from 'framer-motion'
 
 // Original word pairs
 const wordPairs = [
-  { id: 2, english: "Güggel", german: "Hahn" },
-  // Add more word pairs as necessary
+  { id: 1, english: "Chessel", german: "Topf" },
+  /*{ id: 2, english: "Güggel", german: "Hahn" },
+  { id: 3, english: "Chübel", german: "Eimer" },
+  { id: 4, english: "Schüfeli", german: "Schaufel" },
+  { id: 5, english: "Härdöpfel", german: "Kartoffel" },
+  { id: 6, english: "Tschutte", german: "Fußball" },
+  { id: 7, english: "Stägä", german: "Treppe" },
+  { id: 8, english: "Lismä", german: "Stricken" },
+  { id: 10, english: "Hingerschi", german: "Rückwärts" },
+  { id: 11, english: "Schmieler", german: "Polizist" },
+  { id: 12, english: "Röörli", german: "Strohhalm" },
+  { id: 13, english: "Sugus", german: "Bonbon" },
+  { id: 15, english: "Schlarpä", german: "Pantoffeln" },
+  { id: 16, english: "Rüebli", german: "Karotte" },
+  { id: 17, english: "Gnusch", german: "Unordnung" },
+  { id: 18, english: "Schpänggli", german: "Haarspange" }*/
 ];
 
 // Function to shuffle an array
@@ -26,7 +40,7 @@ export default function LanguageGame({ isGameComplete }) {
 
   // Shuffle the words when the component mounts
   useEffect(() => {
-    // Flatten the word pairs into a single array containing both English and German words
+
     const flatWords = wordPairs.flatMap(pair => [
       { id: pair.id, word: pair.english, language: 'english' },
       { id: pair.id, word: pair.german, language: 'german' }
@@ -54,7 +68,7 @@ export default function LanguageGame({ isGameComplete }) {
       setScore(score + 1);
 
       if (matchedPairs.length + 1 === wordPairs.length) {
-        isGameComplete();  // Call the function passed as a prop when all pairs are matched
+        isGameComplete();
       }
     }
     setTimeout(() => setSelectedWords([]), 500);
@@ -75,7 +89,7 @@ export default function LanguageGame({ isGameComplete }) {
           >
             <div
               className={`cursor-pointer rounded-lg w-42 flex justify-center items-center py-3 px-2 text-lg font-semibold transition-all duration-300
-              ${matchedPairs.includes(wordObj.id) ? 'bg-[#f4a261] text-gray-900 border-none' : 'bg-gray-800 text-white'}
+              ${matchedPairs.includes(wordObj.id) ? 'bg-[#f4a261] text-gray-900 border-none' : wordObj.language === 'german' ? 'bg-purple-500 text-white' : 'bg-gray-800 text-white'}
               ${selectedWords.some(w => w.id === wordObj.id && w.language === wordObj.language) ? 'border-[#f4a261]' : 'hover:border-gray-500'}`}
               onClick={() => handleWordClick(wordObj)}
             >

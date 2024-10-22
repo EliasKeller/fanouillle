@@ -1,5 +1,5 @@
-import { FileDown } from "lucide-react"
 import Button from "./Button"
+import { ArrowDownTrayIcon } from '@heroicons/react/24/solid'
 
 export default function PDFDownloader() {
   const handleDownload = (pdfUrl, fileName) => {
@@ -28,14 +28,17 @@ export default function PDFDownloader() {
       <div>
       </div>
       <div className="flex flex-col space-y-4">
-        <Button 
-          onClick={() => handleDownload('/images/Voucher_1.pdf', 'first-document.pdf')}
+        <Button
+          onClick={() => handleDownload('/images/Voucher_1.pdf', 'Kinogutschein 1.pdf')}
         >
+          <ArrowDownTrayIcon className="h-6 w-6 mr-2" />
           Download erster Kinogutschein
         </Button>
-        <Button 
-          onClick={() => handleDownload('/images/Voucher_2.pdf', 'second-document.pdf')}
+        <Button
+          onClick={() => handleDownload('/images/Voucher_2.pdf', 'Kinogutschein 2.pdf')}
         >
+
+          <ArrowDownTrayIcon className="h-6 w-6 mr-2" />
           Download zweiter Kinogutschein
         </Button>
       </div>
