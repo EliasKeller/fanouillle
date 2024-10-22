@@ -26,23 +26,17 @@ export default function PDFDownloader() {
   return (
     <div className="w-full max-w-md mx-auto">
       <div>
-        <h1>PDF Downloads</h1>
-        <p>Click the buttons below to download the PDF files.</p>
       </div>
       <div className="flex flex-col space-y-4">
         <Button 
           onClick={() => handleDownload('/images/Voucher_1.pdf', 'first-document.pdf')}
-          className="w-full"
         >
-          <FileDown className="mr-2 h-4 w-4" />
-          Download First PDF
+          Download erster Kinogutschein
         </Button>
         <Button 
           onClick={() => handleDownload('/images/Voucher_2.pdf', 'second-document.pdf')}
-          className="w-full"
         >
-          <FileDown className="mr-2 h-4 w-4" />
-          Download Second PDF
+          Download zweiter Kinogutschein
         </Button>
       </div>
     </div>

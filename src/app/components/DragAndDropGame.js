@@ -38,14 +38,13 @@ export default function DragAndDropGame({ isGameComplete }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="text-3xl font-bold mb-8">Drag and Drop Game</h1>
+    <div className="flex flex-col items-center justify-center">
       <div className="relative">
         <Image
           src="/images/me.jpg"
           alt="Background"
-          width={600}
-          height={400}
+          width={300}  // Adjusted width
+          height={100} // Adjusted height
           className="rounded-xl shadow-2xl"
         />
         <div
@@ -53,10 +52,9 @@ export default function DragAndDropGame({ isGameComplete }) {
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
-          className="absolute w-32 h-32 border-4 border-dashed border-yellow-500 rounded-lg"
-          style={{ top: '80%', left: '55%', transform: 'translate(-50%, -50%)' }}
+          className="absolute w-20 h-20 border-4 border-dashed border-yellow-500 rounded-lg"
+          style={{ top: '70%', left: '55%', transform: 'translate(-50%, -50%)' }} // Adjusted size and position
         >
-
         </div>
       </div>
       <div className="mt-8">
@@ -68,8 +66,8 @@ export default function DragAndDropGame({ isGameComplete }) {
           <Image
             src="/images/dino.jpg"
             alt="Draggable Item"
-            width={100}
-            height={100}
+            width={80}  // Adjusted draggable item size
+            height={80} // Adjusted draggable item size
             className="rounded-lg shadow-md"
           />
         </div>
