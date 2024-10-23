@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 // Original word pairs
 const wordPairs = [
   { id: 1, english: "Chessel", german: "Topf" },
-  /*{ id: 2, english: "Güggel", german: "Hahn" },
+  { id: 2, english: "Güggel", german: "Hahn" },
   { id: 3, english: "Chübel", german: "Eimer" },
   { id: 4, english: "Schüfeli", german: "Schaufel" },
   { id: 5, english: "Härdöpfel", german: "Kartoffel" },
@@ -20,7 +20,7 @@ const wordPairs = [
   { id: 15, english: "Schlarpä", german: "Pantoffeln" },
   { id: 16, english: "Rüebli", german: "Karotte" },
   { id: 17, english: "Gnusch", german: "Unordnung" },
-  { id: 18, english: "Schpänggli", german: "Haarspange" }*/
+  { id: 18, english: "Schpänggli", german: "Haarspange" }
 ];
 
 // Function to shuffle an array
