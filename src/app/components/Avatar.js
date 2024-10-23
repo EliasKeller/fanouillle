@@ -2,22 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Avatar = ({ message }) => {
-    const [isBlinking, setIsBlinking] = useState(false);
+  const [isBlinking, setIsBlinking] = useState(false);
 
-    const isTalking = message && message.length > 0;
+  const isTalking = message && message.length > 0;
 
 
-    useEffect(() => {
-        const blinkInterval = setInterval(() => {
-            setIsBlinking(true);
-            setTimeout(() => setIsBlinking(false), 200);
-        }, 3000);
+  useEffect(() => {
+    const blinkInterval = setInterval(() => {
+      setIsBlinking(true);
+      setTimeout(() => setIsBlinking(false), 200);
+    }, 3000);
 
-        return () => clearInterval(blinkInterval);
-    }, []);
+    return () => clearInterval(blinkInterval);
+  }, []);
 
-    return (
-        <div className="relative w-full h-52 flex items-start">
+  return (
+    <div className="relative w-full h-52 flex items-start">
+      <div className="relative">
         <div className="absolute left-[-94px] top-0 w-48 h-48">
           <svg viewBox="0 0 366.34 366.34">
             <defs>
@@ -39,14 +40,14 @@ const Avatar = ({ message }) => {
               cx="190.67"
               cy="150.58"
               rx="8"
-              ry={isBlinking ? "1" : "10"}
+              ry={isBlinking ? "1" : "8"}
               fill="#00214e"
               animate={isBlinking ? { ry: [10, 1, 10] } : {}}
               transition={{ duration: 0.2 }}
             />
             {/* Right Eye */}
             <motion.ellipse
-              cx="242.03"
+              cx="238"
               cy="148.13"
               rx="8"
               ry={isBlinking ? "1" : "8"}
@@ -59,19 +60,18 @@ const Avatar = ({ message }) => {
             <path className="cls-7" d="M296.41,282a184.56,184.56,0,0,1-226.48-1l48.66-22.81a46.83,46.83,0,0,0,6.65-3.82c.64-.44,1.28-.9,1.89-1.38a46.35,46.35,0,0,0,12.78-15.09,44.69,44.69,0,0,0,4.64-14.48,28.66,28.66,0,0,0,2.22,1.94,95.14,95.14,0,0,0,19.82,11.26,99,99,0,0,0,10.46,3.69,93.52,93.52,0,0,0,33,3.49c1.54-.12,3.09-.27,4.63-.38l.15,5.08v.33l12.1,4.92Z" fill="#00214e" />
           </svg>
         </div>
-  
-        {/* Speech Bubble */}
+
+        {/* Updated Speech Bubble */}
         {message && (
-          <div className="absolute left-20 top-20 bg-white p-4 rounded-2xl shadow-lg max-w-[384px]">
+          <div className="absolute left-20 top-20 bg-white p-4 rounded-2xl shadow-lg min-w-[16rem] max-w-[24rem] break-words">
             <p className="text-sm">{message}</p>
             {/* Bubble tail */}
-            <div
-              className="absolute top-4 -left-2 w-4 h-4 bg-white transform rotate-45"
-            />
+            <div className="absolute top-4 -left-2 w-4 h-4 bg-white transform rotate-45" />
           </div>
         )}
       </div>
-    );
+    </div>
+  );
 };
 
 export default Avatar;

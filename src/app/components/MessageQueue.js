@@ -41,7 +41,7 @@ const MessageQueue = ({ initialMessages, newMessage }) => {
     }
 
     // Nach der Nachricht warten, bevor zur nächsten gewechselt wird
-    await wait(message.duration || 1000);
+    await wait(500);
     dispatch({ type: 'FINISH_TYPING' });
   };
 

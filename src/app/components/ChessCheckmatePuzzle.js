@@ -5,7 +5,7 @@ import { Chess } from 'chess.js'
 import { Chessboard } from 'react-chessboard'
 import Button from './Button'
 
-export default function ChessCheckmatePuzzle({ isGameComplete }) {
+export default function ChessCheckmatePuzzle({ isGameComplete, setNewMessage }) {
   const [game, setGame] = useState(new Chess())
   const [position, setPosition] = useState('')
   const [message, setMessage] = useState('Find the checkmate in one move!')
@@ -21,21 +21,20 @@ export default function ChessCheckmatePuzzle({ isGameComplete }) {
 
   function makeAMove(move) {
     const gameCopy = new Chess(game.fen())
-    
+
     try {
       const result = gameCopy.move(move)
       setGame(gameCopy)
       setPosition(gameCopy.fen())
 
       if (gameCopy.isCheckmate()) {
-        isGameComplete(); 
-        setMessage('Congratulations! You found the checkmate!')
+        isGameComplete();
         setGameOver(true)
       } else {
-        setMessage('That\'s not the checkmate. Try again!')
+        setNewMessage({ text: "Uff, leider falsch. Versuch es noch einmal über den Reset-Board-Button.", isThinking: false, duration: 5000 });
       }
     } catch (error) {
-      setMessage('Invalid move. Try again!')
+      setNewMessage({ text: "Uff, leider falsch. Versuch es noch einmal über den Reset-Board-Button.", isThinking: false, duration: 5000 });
     }
   }
 
@@ -62,18 +61,17 @@ export default function ChessCheckmatePuzzle({ isGameComplete }) {
   }
 
   return (
-      <div className="flex flex-col items-center space-y-4">
-        <div className="w-full max-w-md">
-          <Chessboard 
-            position={position} 
-            onPieceDrop={onDrop} 
-            boardWidth={400}
-          />
-        </div>
-        <p className="text-lg font-semibold text-center">{message}</p>
-        <Button onClick={resetGame} className="mt-4">
-          Reset Board
-        </Button>
+    <div className="flex flex-col items-center space-y-4">
+      <div className="w-full max-w-md">
+        <Chessboard
+          position={position}
+          onPieceDrop={onDrop}
+          boardWidth={400}
+        />
       </div>
+      <Button onClick={resetGame} className="mt-4">
+        Reset Board
+      </Button>
+    </div>
   )
 }
