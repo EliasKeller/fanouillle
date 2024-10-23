@@ -38,7 +38,7 @@ const Avatar = ({ message }) => {
             <motion.ellipse
               cx="190.67"
               cy="150.58"
-              rx="15"
+              rx="8"
               ry={isBlinking ? "1" : "10"}
               fill="#00214e"
               animate={isBlinking ? { ry: [10, 1, 10] } : {}}
@@ -48,30 +48,15 @@ const Avatar = ({ message }) => {
             <motion.ellipse
               cx="242.03"
               cy="148.13"
-              rx="15"
-              ry={isBlinking ? "1" : "10"}
+              rx="8"
+              ry={isBlinking ? "1" : "8"}
               fill="#00214e"
               animate={isBlinking ? { ry: [10, 1, 10] } : {}}
               transition={{ duration: 0.2 }}
             />
-            <line className="cls-6" x1="202.93" y1="151.47" x2="228.46" y2="149.29" fill="none" stroke="#00214e" strokeMiterlimit="10" />
             <path className="cls-6" d="M172.65,131a80.58,80.58,0,0,1,28.13-.8" fill="none" stroke="#00214e" strokeMiterlimit="10" />
             <path className="cls-6" d="M231.7,131.13a55,55,0,0,1,17.45-1.21" fill="none" stroke="#00214e" strokeMiterlimit="10" />
             <path className="cls-7" d="M296.41,282a184.56,184.56,0,0,1-226.48-1l48.66-22.81a46.83,46.83,0,0,0,6.65-3.82c.64-.44,1.28-.9,1.89-1.38a46.35,46.35,0,0,0,12.78-15.09,44.69,44.69,0,0,0,4.64-14.48,28.66,28.66,0,0,0,2.22,1.94,95.14,95.14,0,0,0,19.82,11.26,99,99,0,0,0,10.46,3.69,93.52,93.52,0,0,0,33,3.49c1.54-.12,3.09-.27,4.63-.38l.15,5.08v.33l12.1,4.92Z" fill="#00214e" />
-            <motion.path
-              className="cls-7"
-              d="M186.28,142.24c6.1,0,6.1,9.38,0,9.43H186c-6.11,0-6.11-9.38,0-9.43h.27Z"
-              fill="#00214e"
-              animate={isTalking ? { scaleY: [1, 1.2, 1] } : {}}
-              transition={{ repeat: Infinity, duration: 0.3 }}
-            />
-            <motion.path
-              className="cls-7"
-              d="M236.41,140.85c5.66.05,5.66,8.7,0,8.75h-.26c-5.66,0-5.66-8.7,0-8.75h.26Z"
-              fill="#00214e"
-              animate={isTalking ? { scaleY: [1, 1.2, 1] } : {}}
-              transition={{ repeat: Infinity, duration: 0.3 }}
-            />
           </svg>
         </div>
   
